@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Quiz {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  quizId      String     @unique 
+  userId      String     
+  type        String
+  coverPage   CoverPage?  // One-to-one กับ CoverPage
+  sections    Section[]   @relation("QuizSections") // One-to-many กับ Section
+}
+
+model CoverPage {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  quizId      String   @db.ObjectId @unique // One-to-one ต้องมี @unique
+  quizTitle   String   // ชื่อ quiz
+  description String
+  buttonText  String
+  imagePath   String?  // รูปภาพของ cover page (nullable)
+  quiz        Quiz     @relation(fields: [quizId], references: [id]) // One-to-one กับ Quiz
+}
+
+model Section {
+  id                 String     @id @default(auto()) @map("_id") @db.ObjectId
+  sectionId          String     @unique // เพิ่ม sectionId และทำให้เป็น unique
+  sectionNumber      Int        // หมายเลข section
+  sectionTitle       String     // ชื่อ section
+  sectionDescription String     // คำอธิบาย section
+  quizId             String     @db.ObjectId
+  quiz               Quiz       @relation("QuizSections", fields: [quizId], references: [id]) // One-to-many กับ Quiz
+  questions          Question[] @relation("SectionQuestions") // One-to-many กับ Question
+}
+
+model Question {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  questionId  String
+  type        String
+  text        String
+  imagePath   String?   // รูปภาพของคำถาม (nullable)
+  required    Boolean   // ระบุว่าต้องตอบคำถามหรือไม่
+  options     Option[]  @relation("QuestionOptions") // One-to-many กับ Option
+  points      Int
+  section     Section   @relation("SectionQuestions", fields: [sectionId], references: [id]) // Many-to-one กับ Section
+  sectionId   String    @db.ObjectId
+}
+
+model Option {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  optionId   String
+  text       String
+  imagePath  String?  // รูปภาพของตัวเลือกคำตอบ (nullable)
+  isCorrect  Boolean
+  weight     Int
+  question   Question @relation("QuestionOptions", fields: [questionId], references: [id]) // Many-to-one กับ Question
+  questionId String   @db.ObjectId
+}
