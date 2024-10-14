@@ -1,5 +1,12 @@
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
+// const cors = require('cors');
+
+// app.use(cors({
+//   origin: ['http://localhost:3000','https://www.patheeratee.site', 'http://10.53.50.183:3000','https://api.patheeratee.site'],
+//   credentials: true,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+// }));
 
 const app = express();
 const prisma = new PrismaClient();
@@ -89,8 +96,43 @@ app.get('/quiz', async (req, res) => {
   }
 });
 
+// GET Method เพื่อดึงข้อมูล Quiz ตาม quizId
+app.get('/quiz/:quizId', async (req, res) => {
+  const { quizId } = req.params;
+
+  try {
+    const quiz = await prisma.quiz.findUnique({
+      where: {
+        quizId: quizId
+      },
+      include: {
+        coverPage: true,
+        sections: {
+          include: {
+            questions: {
+              include: {
+                options: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (quiz) {
+      res.status(200).json(quiz);
+    } else {
+      res.status(404).json({ error: 'Quiz not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // รันเซิร์ฟเวอร์
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
