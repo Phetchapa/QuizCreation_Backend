@@ -15,7 +15,7 @@ datasource db {
 
 model Quiz {
   id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  quizId      String     @unique 
+  quizId      String     @unique @default(uuid())
   userId      String     
   type        String
   coverPage   CoverPage?  // One-to-one กับ CoverPage

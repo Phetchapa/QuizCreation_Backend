@@ -6,7 +6,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'your_api_key
 
 exports.generateQuizQuestions = async (req, res) => {
     try {
-        const { topic, numQuestions, quizId, userId, type, coverPage, sectionId, sectionTitle, sectionDescription } = req.body;
+        const { topic, numQuestions, userId, type, coverPage, sectionId, sectionTitle, sectionDescription } = req.body;
 
         // ปรับ prompt เพื่อสร้างคำถามหลายข้อพร้อมกัน
         const prompt = `
@@ -44,7 +44,6 @@ exports.generateQuizQuestions = async (req, res) => {
 
             // สร้าง quiz JSON structure โดยรวมคำถามจาก Gemini
             const quizData = {
-                quizId,
                 userId,
                 type,
                 coverPage: coverPage ? {
@@ -84,8 +83,8 @@ exports.generateQuizQuestions = async (req, res) => {
             // บันทึก quiz โดยใช้ quizService
             const newQuiz = await quizService.createQuiz(quizData);
 
-            // ส่ง quiz ที่สร้างกลับไปยังผู้ใช้
-            res.status(201).json(newQuiz);
+            // ส่ง quizId ที่สร้างกลับไปยังผู้ใช้
+            res.status(201).json({ quizId: newQuiz.quizId });
         } else {
             res.status(500).json({ message: "No content generated from the API." });
         }
