@@ -1,13 +1,14 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const quizService = require('../services/quizService');
 
 // ตั้งค่า Gemini API
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'AIzaSyCImWU1hYBoqZ-KoErXe9I0YgyxIZxJb5s');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'your_api_key_here');
 
 exports.generateQuizQuestions = async (req, res) => {
     try {
-        const { topic, numQuestions } = req.body; // รับข้อความและจำนวนคำถามจากผู้ใช้
+        const { topic, numQuestions, quizId, userId, type, coverPage, sectionId, sectionTitle, sectionDescription } = req.body;
 
-        // ปรับ prompt เพื่อให้สร้างคำถามหลายข้อในครั้งเดียว
+        // ปรับ prompt เพื่อสร้างคำถามหลายข้อพร้อมกัน
         const prompt = `
           Create ${numQuestions} multiple choice quiz questions about ${topic}, where each question has 4 options, and one of the options is correct.
           The questions and options should be returned in this JSON schema:
@@ -41,8 +42,50 @@ exports.generateQuizQuestions = async (req, res) => {
 
             const generatedQuestions = JSON.parse(rawContent);
 
-            // ส่งคำถามทั้งหมดกลับไปยังผู้ใช้
-            res.json({ generatedQuiz: generatedQuestions });
+            // สร้าง quiz JSON structure โดยรวมคำถามจาก Gemini
+            const quizData = {
+                quizId,
+                userId,
+                type,
+                coverPage: coverPage ? {
+                    create: {
+                        quizTitle: coverPage.quizTitle,
+                        description: coverPage.description,
+                        buttonText: coverPage.buttonText,
+                        imagePath: coverPage.imagePath,
+                    },
+                } : undefined,
+                sections: {
+                    create: [{
+                        sectionId,
+                        sectionNumber: 1, // สามารถปรับได้ตามลำดับที่ต้องการ
+                        sectionTitle,
+                        sectionDescription,
+                        questions: {
+                            create: generatedQuestions.map((genQuestion, index) => ({
+                                questionId: `${index + 1}`,
+                                type: "Multiple Choice",
+                                text: genQuestion.question.text,
+                                required: genQuestion.question.required,
+                                points: 1, // คุณสามารถเปลี่ยนตามที่ต้องการ
+                                options: {
+                                    create: genQuestion.question.options.map((option, optIndex) => ({
+                                        optionId: `${optIndex + 1}`,
+                                        text: option.text,
+                                        isCorrect: option.isCorrect,
+                                    })),
+                                },
+                            })),
+                        },
+                    }],
+                }
+            };
+
+            // บันทึก quiz โดยใช้ quizService
+            const newQuiz = await quizService.createQuiz(quizData);
+
+            // ส่ง quiz ที่สร้างกลับไปยังผู้ใช้
+            res.status(201).json(newQuiz);
         } else {
             res.status(500).json({ message: "No content generated from the API." });
         }

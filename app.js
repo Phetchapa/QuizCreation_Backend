@@ -1,8 +1,13 @@
-// app.js
 const express = require('express');
+const cors = require('cors'); // เพิ่มการเรียกใช้งาน cors
 const quizRoutes = require('./src/routes/quizRoutes');
 
 const app = express();
+
+// กำหนดค่า CORS เพื่ออนุญาตให้ localhost:3000 เข้าถึง API ได้
+app.use(cors({
+  origin: 'http://localhost:3000' // ระบุโดเมนที่อนุญาต
+}));
 
 // Middleware สำหรับ parse JSON request body
 app.use(express.json());
