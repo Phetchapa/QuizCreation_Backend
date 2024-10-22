@@ -9,7 +9,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@prisma/client": "^5.20.0",
+    "backend-seminar": "file:",
+    "cors": "^2.8.5",
     "express": "^4.21.1"
   },
   "devDependencies": {
