@@ -57,7 +57,11 @@ module.exports = {
   getQuizzes: async (req, res) => {
     try {
       const quizzes = await quizService.getAllQuizzes();
-      res.status(200).json(quizzes);
+      if (quizzes.message) {
+        res.status(200).json({ message: quizzes.message });
+      } else {
+        res.status(200).json(quizzes);
+      }
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });

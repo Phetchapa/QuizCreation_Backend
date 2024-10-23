@@ -1,0 +1,123 @@
+{
+    "quizId": "d123e456-7890-4abc-1234-56789abcdef0",
+    "userId": "admin",
+    "type": "quiz",
+    "coverPage": {
+        "quizTitle": "สัตว์เลี้ยงในใจคุณ",
+        "description": "ตอบคำถามการเลี้ยงสัตว์",
+        "buttonText": "เริ่มเลย!",
+        "imagePath": null
+    },
+    "sections": [
+        {
+            "sectionId": "a123b456-c789-4def-1234-56789abcdeff",
+            "sectionNumber": 1,
+            "sectionTitle": "คำถามที่น่าสนใจ",
+            "sectionDescription": "รบกวนตอบซักเล็กน้อย !",
+            "questions": [
+                {
+                    "questionId": "q1",
+                    "type": "Multiple Choice",
+                    "text": "ตอนนี้เลี้ยงสัตว์ไหม",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "text": "เลี้ยง",
+                            "isCorrect": true
+                        },
+                        {
+                            "optionId": "o2",
+                            "text": "ไม่ได้เลี้ยง",
+                            "isCorrect": false
+                        }
+                    ]
+                },
+                {
+                    "questionId": "q2",
+                    "type": "Checkbox",
+                    "text": "สีของท้องฟ้าที่เคยเห็น",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "text": "สีฟ้า",
+                            "isCorrect": true
+                        },
+                        {
+                            "optionId": "o2",
+                            "text": "สีส้ม",
+                            "isCorrect": false
+                        },
+                        {
+                            "optionId": "o3",
+                            "text": "สีเทา",
+                            "isCorrect": true
+                        },
+                        {
+                            "optionId": "o4",
+                            "text": "สีชมพู",
+                            "isCorrect": false
+                        }
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "type": "Dropdown",
+                    "text": "เลือกสัตว์ที่อยากเลี้ยง",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "text": "มังกร",
+                            "isCorrect": false
+                        },
+                        {
+                            "optionId": "o2",
+                            "text": "แมว",
+                            "isCorrect": false
+                        },
+                        {
+                            "optionId": "o3",
+                            "text": "ผี",
+                            "isCorrect": true
+                        }
+                    ]
+                },
+                {
+                    "questionId": "q4",
+                    "type": "Rating",
+                    "text": "ให้คะแนนความอยากเลี้ยงสัตว์",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": []
+                },
+                {
+                    "questionId": "q5",
+                    "type": "Text",
+                    "text": "ตอนนี้เลี้ยงสัตว์ใช่หรือไม่",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": []
+                },
+                {
+                    "questionId": "q6",
+                    "type": "Date",
+                    "text": "วันที่ตอบแบบสอบถาม",
+                    "imagePath": null,
+                    "required": true,
+                    "points": 5,
+                    "options": []
+                }
+            ]
+        }
+    ]
+}

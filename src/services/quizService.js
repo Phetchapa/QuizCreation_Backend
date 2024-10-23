@@ -10,6 +10,9 @@ module.exports = {
 
   getAllQuizzes: async () => {
     const quizzes = await quizRepository.getAllQuizzes();
+    if (quizzes.length === 0) {
+      return { message: 'ยังไม่มีแบบทดสอบหรือแบบฟอร์มที่เคยสร้าง' };
+    }
     return quizzes;
   },
 

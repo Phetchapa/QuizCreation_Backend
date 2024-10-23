@@ -1,0 +1,411 @@
+{
+    "quizId": "d123e456-7890-4abc-1234-56789abcdef0",
+    "responses": [
+        {
+            "responseId": "response1",
+            "userId": "user1",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o1",
+                        "o3"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 4
+                },
+                {
+                    "questionId": "q5",
+                    "text": "เลี้ยงหมา"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response2",
+            "userId": "user2",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o2",
+                        "o4"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 2
+                },
+                {
+                    "questionId": "q5",
+                    "text": "ไม่ได้เลี้ยง"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response3",
+            "userId": "user3",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o1",
+                        "o2",
+                        "o4"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o3"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 5
+                },
+                {
+                    "questionId": "q5",
+                    "text": "เลี้ยงแมว"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response4",
+            "userId": "user4",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o1"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 3
+                },
+                {
+                    "questionId": "q5",
+                    "text": "ไม่เลี้ยง"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response5",
+            "userId": "user5",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o3"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 1
+                },
+                {
+                    "questionId": "q5",
+                    "text": "เลี้ยงนก"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response6",
+            "userId": "user6",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o2",
+                        "o4"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o3"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 2
+                },
+                {
+                    "questionId": "q5",
+                    "text": "ไม่เลี้ยง"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response7",
+            "userId": "user7",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o1",
+                        "o4"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 5
+                },
+                {
+                    "questionId": "q5",
+                    "text": "เลี้ยงปลา"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response8",
+            "userId": "user8",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o2"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o3",
+                        "o4"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 3
+                },
+                {
+                    "questionId": "q5",
+                    "text": "ไม่เลี้ยง"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        },
+        {
+            "responseId": "response9",
+            "userId": "user9",
+            "answers": [
+                {
+                    "questionId": "q1",
+                    "selectedOptionId": "o1"
+                },
+                {
+                    "questionId": "q2",
+                    "selectedOptionIds": [
+                        "o1",
+                        "o2"
+                    ]
+                },
+                {
+                    "questionId": "q3",
+                    "selectedOptionId": "o3"
+                },
+                {
+                    "questionId": "q4",
+                    "rating": 4
+                },
+                {
+                    "questionId": "q5",
+                    "text": "เลี้ยงกระต่าย"
+                },
+                {
+                    "questionId": "q6",
+                    "date": "2024-10-23"
+                }
+            ]
+        }
+    ],
+    "summary": {
+        "totalResponses": 9,
+        "questions": [
+            {
+                "questionId": "q1",
+                "summary": {
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "count": 5
+                        },
+                        {
+                            "optionId": "o2",
+                            "count": 4
+                        }
+                    ]
+                }
+            },
+            {
+                "questionId": "q2",
+                "summary": {
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "count": 6
+                        },
+                        {
+                            "optionId": "o2",
+                            "count": 4
+                        },
+                        {
+                            "optionId": "o3",
+                            "count": 3
+                        },
+                        {
+                            "optionId": "o4",
+                            "count": 5
+                        }
+                    ]
+                }
+            },
+            {
+                "questionId": "q3",
+                "summary": {
+                    "options": [
+                        {
+                            "optionId": "o1",
+                            "count": 3
+                        },
+                        {
+                            "optionId": "o2",
+                            "count": 4
+                        },
+                        {
+                            "optionId": "o3",
+                            "count": 2
+                        }
+                    ]
+                }
+            },
+            {
+                "questionId": "q4",
+                "summary": {
+                    "averageRating": [
+                        4,
+                        2,
+                        5,
+                        3,
+                        1,
+                        2,
+                        5,
+                        3,
+                        4
+                    ]
+                }
+            },
+            {
+                "questionId": "q5",
+                "summary": {
+                    "textResponses": [
+                        "เลี้ยงหมา",
+                        "ไม่ได้เลี้ยง",
+                        "เลี้ยงแมว",
+                        "ไม่เลี้ยง",
+                        "เลี้ยงนก",
+                        "ไม่ได้เลี้ยง",
+                        "เลี้ยงปลา",
+                        "ไม่ได้เลี้ยง",
+                        "เลี้ยงกระต่าย"
+                    ]
+                }
+            },
+            {
+                "questionId": "q6",
+                "summary": {
+                    "dates": [
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23",
+                        "2024-10-23"
+                    ]
+                }
+            }
+        ]
+    }
+}

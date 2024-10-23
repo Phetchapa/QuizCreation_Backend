@@ -6,26 +6,32 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'your_api_key
 
 exports.generateQuizQuestions = async (req, res) => {
     try {
-        const { topic, numQuestions, userId, type, coverPage, sectionId, sectionTitle, sectionDescription } = req.body;
+        const { topic, numQuestions, userId, type, coverPage, sectionId, sectionTitle, sectionDescription, language } = req.body;
 
-        // ปรับ prompt เพื่อสร้างคำถามหลายข้อพร้อมกัน
+        // ปรับ prompt เพื่อสร้างคำถามหลายข้อพร้อมกัน รวมถึงการสร้าง quizTitle และ description
         const prompt = `
           Create ${numQuestions} multiple choice quiz questions about ${topic}, where each question has 4 options, and one of the options is correct.
+          Also, generate a quizTitle and a description for the quiz based on the given topic.
+          The language of the questions, options, quizTitle, and description should be ${language}.
           The questions and options should be returned in this JSON schema:
-          [
-            {
-              "question": {
-                "text": "string",
-                "required": "boolean",
-                "options": [
-                  {
-                    "text": "string",
-                    "isCorrect": "boolean"
-                  }
-                ]
+          {
+            "quizTitle": "string",
+            "description": "string",
+            "questions": [
+              {
+                "question": {
+                  "text": "string",
+                  "required": "boolean",
+                  "options": [
+                    {
+                      "text": "string",
+                      "isCorrect": "boolean"
+                    }
+                  ]
+                }
               }
-            }
-          ]
+            ]
+          }
         `;
 
         const model = genAI.getGenerativeModel({
@@ -40,20 +46,21 @@ exports.generateQuizQuestions = async (req, res) => {
             let rawContent = candidates[0].content?.parts[0]?.text;
             rawContent = rawContent.replace(/```json|```/g, '').trim();
 
-            const generatedQuestions = JSON.parse(rawContent);
+            const generatedContent = JSON.parse(rawContent);
+            const { quizTitle, description, questions: generatedQuestions } = generatedContent;
 
             // สร้าง quiz JSON structure โดยรวมคำถามจาก Gemini
             const quizData = {
                 userId,
                 type,
-                coverPage: coverPage ? {
+                coverPage: {
                     create: {
-                        quizTitle: coverPage.quizTitle,
-                        description: coverPage.description,
-                        buttonText: coverPage.buttonText,
-                        imagePath: coverPage.imagePath,
+                        quizTitle: quizTitle,
+                        description: description,
+                        buttonText: coverPage?.buttonText || "Start Quiz",
+                        imagePath: coverPage?.imagePath,
                     },
-                } : undefined,
+                },
                 sections: {
                     create: [{
                         sectionId,

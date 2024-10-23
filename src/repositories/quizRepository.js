@@ -8,6 +8,9 @@ module.exports = {
 
   getAllQuizzes: async () => {
     return await prisma.quiz.findMany({
+      orderBy: {
+        id: 'desc'
+      },
       include: {
         coverPage: true,
         sections: {
