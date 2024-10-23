@@ -73,5 +73,16 @@ module.exports = {
       console.error(error.message);
       res.status(404).json({ error: 'Quiz not found' });
     }
+  },
+
+  deleteQuiz: async (req, res) => {
+    const { quizId } = req.params;
+    try {
+      await quizService.deleteQuiz(quizId);
+      res.status(200).json({ message: 'Quiz deleted successfully' });
+    } catch (error) {
+      console.error(error.message);
+      res.status(404).json({ error: 'Quiz not found' });
+    }
   }
 };
